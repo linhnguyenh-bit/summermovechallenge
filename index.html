@@ -353,7 +353,7 @@ h2::after {
   <div class="hero-float float-3">🦩</div>
   <div class="hero-float float-4">🍉</div>
 
-  <div class="hero-pill">June 1 – August 23, 2026</div>
+  <div class="hero-pill">June 1 – September 30, 2026</div>
   <h1><span class="sparkle">✨</span> Summer Movement<br>Challenge</h1>
   <p>A wellness initiative to get you moving this summer</p>
   <div class="hero-tags">
@@ -373,7 +373,7 @@ h2::after {
 <div id="section-about" class="section active">
   <div class="card card-sun">
     <h2><i class="ti ti-sun" aria-hidden="true"></i> ✨ What is the Summer Movement Challenge?</h2>
-    <p style="font-size:14px; color:#633806; line-height:1.7; margin-bottom:1rem;">The Summer Movement Challenge is a fun, staff-wide wellness initiative running from <strong style="color:#412402;">June 1 to August 23, 2026</strong>. All movement counts — not just walking! Cycling, swimming, yoga, kayaking, hiking, and fitness classes all convert to steps so everyone can join in no matter how they like to move.</p>
+    <p style="font-size:14px; color:#633806; line-height:1.7; margin-bottom:1rem;">The Summer Movement Challenge is a fun, wellness initiative running from <strong style="color:#412402;">June 1 to September 30, 2026</strong>. All movement counts — not just walking! Cycling, swimming, yoga, kayaking, hiking, and fitness classes all convert to steps so everyone can join in no matter how they like to move.</p>
     <p style="font-size:14px; color:#633806; line-height:1.7;">You can join one, two, or all three challenges — as an individual, part of a team, or both at once.</p>
   </div>
 
@@ -551,15 +551,15 @@ h2::after {
   <div class="stats-grid">
     <div class="stat-card sc-sun">
       <div class="stat-label"><i class="ti ti-users" aria-hidden="true"></i> Participants</div>
-      <div class="stat-val">47</div>
+      <div class="stat-val" id="participants-count">0</div>
     </div>
     <div class="stat-card sc-sky">
       <div class="stat-label"><i class="ti ti-shoe" aria-hidden="true"></i> Total steps</div>
-      <div class="stat-val">2.1M</div>
+      <div class="stat-val" id="total-steps">0</div>
     </div>
     <div class="stat-card sc-mint">
       <div class="stat-label"><i class="ti ti-calendar" aria-hidden="true"></i> Days left</div>
-      <div class="stat-val">88</div>
+      <div class="stat-val" id="days-left">0</div>
     </div>
   </div>
 
@@ -574,27 +574,19 @@ h2::after {
 <div class="card card-pink">
   <h2>📸 Show Off Your Activity!</h2>
 
-  <p>
-    Upload a photo of your walk, hike, workout, bike ride,
-    fitness tracker, or summer adventure 🌈
+  <p style="margin-bottom:1rem;">
+    Share your walk, hike, workout, bike ride, fitness tracker, or summer adventure 🌈
   </p>
 
-  <div class="proof-upload-box">
-    <input
-      type="file"
-      id="proof-upload"
-      accept="image/*"
-      onchange="previewProof(event)"
-    />
-
-    <div class="upload-success">
-      ✨ Share your wins and inspire the team!
-    </div>
-
-    <div class="proof-preview" id="proof-preview">
-      <img id="proof-image" src="" alt="Activity proof preview" />
-    </div>
-  </div>
+  <a
+    href="https://forms.gle/1cNxyoVAwNkET3rV7"
+    target="_blank"
+    class="submit-btn"
+    style="background:#ED93B1; color:#4B1528; text-decoration:none; display:inline-flex; justify-content:center; align-items:center;"
+  >
+    <i class="ti ti-camera" aria-hidden="true"></i>&nbsp; Upload Your Activity Photo
+  </a>
+</div>
 </div>
 
 <div id="lb-individual">
@@ -650,50 +642,11 @@ h2::after {
       </div>
     </div>
 
-    <div id="lb-team" style="display:none;">
-      <div class="lb-item">
-        <div class="rank" style="font-size:22px;">🥇</div>
-        <div class="avatar av-pink" style="border-radius:10px;">🔥</div>
-        <div class="lb-info">
-          <div class="lb-name">Mighty Movers <span class="badge bdg-sun">1st!</span></div>
-          <div class="lb-sub">5 members</div>
-          <div class="pb-wrap"><div class="pb-fill pb-pink" style="width:89%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">1.2M</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank">🥈</div>
-        <div class="avatar av-mint" style="border-radius:10px;">☀️</div>
-        <div class="lb-info">
-          <div class="lb-name">Sun Steppers</div>
-          <div class="lb-sub">4 members</div>
-          <div class="pb-wrap"><div class="pb-fill pb-mint" style="width:72%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">980K</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank" style="font-size:14px; color:var(--color-text-secondary);">3</div>
-        <div class="avatar av-sky" style="border-radius:10px;">⛰️</div>
-        <div class="lb-info">
-          <div class="lb-name">Peak Performers</div>
-          <div class="lb-sub">3 members</div>
-          <div class="pb-wrap"><div class="pb-fill pb-sky" style="width:58%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">786K</div><div class="lb-pct">steps</div></div>
-      </div>
-    </div>
+    <div id="lb-team" style="display:none;"></div>
 
-    <div id="lb-streak" style="display:none;">
-      <p style="font-size:12px; color:#633806; margin-bottom:12px;">Longest unbroken daily streak of 10,000+ steps. One winner takes the prize.</p>
-      <div class="lb-item">
-        <div class="rank" style="font-size:22px;">🥇</div>
-        <div class="avatar av-mint">🌈</div>
-        <div class="lb-info">
-          <div class="lb-name">Marcus K. <span class="badge bdg-sun">Leading!</span></div>
-          <div class="lb-sub">Unbroken since June 1</div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">56 days</div><div class="lb-pct">streak</div></div>
-      </div>
+    <div id="lb-streak" style="display:none;"></div>
+  </div>
+</div>
       <div class="lb-item">
         <div class="rank">2</div>
         <div class="avatar av-pink">🦄</div>
@@ -900,6 +853,141 @@ async function saveActivity(data) {
 window.registerParticipant = registerParticipant;
 window.saveActivity = saveActivity;
 
+function formatSteps(num) {
+  if (num >= 1000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+  return num.toLocaleString();
+}
+
+function updateDaysLeft() {
+  const endDate = new Date('2026-09-30T23:59:59');
+  const now = new Date();
+  const diff = Math.max(0, Math.ceil((endDate - now) / (1000 * 60 * 60 * 24)));
+  const el = document.getElementById('days-left');
+  if (el) el.textContent = diff;
+}
+
+updateDaysLeft();
+
+const participantsQuery = query(collection(db, 'participants'));
+
+onSnapshot(participantsQuery, (snapshot) => {
+  const names = new Set();
+
+  snapshot.forEach((doc) => {
+    const data = doc.data();
+    if (data.name) names.add(data.name);
+  });
+
+  const participantsEl = document.getElementById('participants-count');
+
+  if (participantsEl) {
+    participantsEl.textContent = names.size;
+  }
+});
+
+function renderTeams(teamTotals) {
+  const container = document.getElementById('lb-team');
+
+  if (!container) return;
+
+  const sortedTeams = Object.entries(teamTotals)
+    .sort((a,b) => b[1].steps - a[1].steps);
+
+  if (sortedTeams.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center; padding:2rem;">
+        <div style="font-size:48px; margin-bottom:8px;">👥</div>
+        <p style="font-size:14px; color:#633806;">
+          No teams registered yet.
+        </p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = '';
+
+  sortedTeams.forEach((team, index) => {
+    const medal = ['🥇','🥈','🥉'][index] || (index + 1);
+
+    container.innerHTML += `
+      <div class="lb-item">
+        <div class="rank">${medal}</div>
+        <div class="avatar av-sky" style="border-radius:10px;">👟</div>
+
+        <div class="lb-info">
+          <div class="lb-name">${team[0]}</div>
+          <div class="lb-sub">${team[1].members.size} members</div>
+
+          <div class="pb-wrap">
+            <div class="pb-fill pb-sky"
+              style="width:${Math.max(20, 100 - index * 15)}%">
+            </div>
+          </div>
+        </div>
+
+        <div class="lb-right">
+          <div class="lb-steps">${formatSteps(team[1].steps)}</div>
+          <div class="lb-pct">steps</div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function renderStreaks(streaks) {
+  const container = document.getElementById('lb-streak');
+
+  if (!container) return;
+
+  const sorted = Object.entries(streaks)
+    .sort((a,b) => b[1] - a[1]);
+
+  if (sorted.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center; padding:2rem;">
+        <div style="font-size:48px; margin-bottom:8px;">🔥</div>
+        <p style="font-size:14px; color:#633806;">
+          Start logging daily steps to build streaks!
+        </p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <p style="font-size:12px; color:#633806; margin-bottom:12px;">
+      Longest current streak of 10,000+ daily steps.
+    </p>
+  `;
+
+  sorted.slice(0, 10).forEach((item, index) => {
+    const medal = ['🥇','🥈','🥉'][index] || (index + 1);
+
+    container.innerHTML += `
+      <div class="lb-item">
+        <div class="rank">${medal}</div>
+
+        <div class="avatar av-mint">
+          ${item[0].charAt(0).toUpperCase()}
+        </div>
+
+        <div class="lb-info">
+          <div class="lb-name">${item[0]}</div>
+          <div class="lb-sub">Current streak</div>
+        </div>
+
+        <div class="lb-right">
+          <div class="lb-steps">${item[1]} days</div>
+          <div class="lb-pct">streak</div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+
 const leaderboardQuery = query(
   collection(db, 'activities'),
   orderBy('createdAt', 'desc')
@@ -908,6 +996,8 @@ const leaderboardQuery = query(
 onSnapshot(leaderboardQuery, (snapshot) => {
 
   const totals = {};
+  const dailyTotals = {};
+  let totalSteps = 0;
 
   snapshot.forEach((doc) => {
     const data = doc.data();
@@ -917,7 +1007,26 @@ onSnapshot(leaderboardQuery, (snapshot) => {
     }
 
     totals[data.name] += data.steps || 0;
+    totalSteps += data.steps || 0;
+
+    const dateKey = data.date || '';
+
+    if (!dailyTotals[data.name]) {
+      dailyTotals[data.name] = {};
+    }
+
+    if (!dailyTotals[data.name][dateKey]) {
+      dailyTotals[data.name][dateKey] = 0;
+    }
+
+    dailyTotals[data.name][dateKey] += data.steps || 0;
   });
+
+  const totalStepsEl = document.getElementById('total-steps');
+
+  if (totalStepsEl) {
+    totalStepsEl.textContent = formatSteps(totalSteps);
+  }
 
   const sorted = Object.entries(totals)
     .sort((a,b) => b[1] - a[1])
@@ -936,43 +1045,105 @@ onSnapshot(leaderboardQuery, (snapshot) => {
         </p>
       </div>
     `;
-    return;
-  }
+  } else {
+    const emojis = ['🥇','🥈','🥉','✨','🌟','💫','🎉','🌈','☀️','🦄'];
 
-  const emojis = ['🥇','🥈','🥉','✨','🌟','💫','🎉','🌈','☀️','🦄'];
+    container.innerHTML = '';
 
-  container.innerHTML = '';
+    sorted.forEach((item, index) => {
 
-  sorted.forEach((item, index) => {
+      const medal = emojis[index] || '✨';
 
-    const medal = emojis[index] || '✨';
+      container.innerHTML += `
+        <div class="lb-item">
+          <div class="rank">${medal}</div>
 
-    container.innerHTML += `
-      <div class="lb-item">
-        <div class="rank">${medal}</div>
+          <div class="avatar av-pink">
+            ${item[0].charAt(0).toUpperCase()}
+          </div>
 
-        <div class="avatar av-pink">
-          ${item[0].charAt(0).toUpperCase()}
-        </div>
-
-        <div class="lb-info">
-          <div class="lb-name">${item[0]}</div>
-          <div class="lb-sub">Live participant</div>
-          <div class="pb-wrap">
-            <div class="pb-fill pb-pink"
-              style="width:${Math.min(100, 30 + index * 8)}%">
+          <div class="lb-info">
+            <div class="lb-name">${item[0]}</div>
+            <div class="lb-sub">Live participant</div>
+            <div class="pb-wrap">
+              <div class="pb-fill pb-pink"
+                style="width:${Math.max(20, 100 - index * 8)}%">
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="lb-right">
-          <div class="lb-steps">
-            ${item[1].toLocaleString()}
+          <div class="lb-right">
+            <div class="lb-steps">
+              ${item[1].toLocaleString()}
+            </div>
+            <div class="lb-pct">steps</div>
           </div>
-          <div class="lb-pct">steps</div>
         </div>
-      </div>
-    `;
+      `;
+    });
+  }
+
+  Promise.all([
+    import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")
+  ]).then(async () => {
+    const { getDocs } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+    const participantsSnapshot = await getDocs(collection(db, 'participants'));
+
+    const teamTotals = {};
+
+    participantsSnapshot.forEach((doc) => {
+      const data = doc.data();
+
+      if (data.team && data.team.trim()) {
+        if (!teamTotals[data.team]) {
+          teamTotals[data.team] = {
+            steps: 0,
+            members: new Set()
+          };
+        }
+
+        teamTotals[data.team].members.add(data.name);
+
+        if (totals[data.name]) {
+          teamTotals[data.team].steps += totals[data.name];
+        }
+      }
+    });
+
+    renderTeams(teamTotals);
+
+    const streaks = {};
+
+    Object.keys(dailyTotals).forEach((name) => {
+      const qualifyingDates = Object.entries(dailyTotals[name])
+        .filter(([date, steps]) => date && steps >= 10000)
+        .map(([date]) => date)
+        .sort();
+
+      let streak = 0;
+
+      for (let i = qualifyingDates.length - 1; i >= 0; i--) {
+        const current = new Date(qualifyingDates[i]);
+        const prev = qualifyingDates[i - 1];
+
+        streak++;
+
+        if (!prev) break;
+
+        const prevDate = new Date(prev);
+        const diffDays = Math.round((current - prevDate) / (1000 * 60 * 60 * 24));
+
+        if (diffDays !== 1) {
+          break;
+        }
+      }
+
+      if (streak > 0) {
+        streaks[name] = streak;
+      }
+    });
+
+    renderStreaks(streaks);
   });
 });
 </script>
