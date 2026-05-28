@@ -232,6 +232,73 @@ body {
   50% { transform: rotate(10deg) scale(1.15); }
 }
 
+
+body {
+  font-family: 'Nunito', sans-serif !important;
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  color: #2d3748;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Nunito', sans-serif !important;
+  letter-spacing: -0.02em;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 6vw, 4.8rem) !important;
+  line-height: 1.08 !important;
+  font-weight: 800 !important;
+}
+
+.hero-subtitle,
+.hero p,
+.card p,
+.lb-sub,
+label,
+input,
+select,
+button {
+  font-size: 1.05rem !important;
+}
+
+.card {
+  border-radius: 20px !important;
+  padding: 1.5rem !important;
+}
+
+input, select, textarea {
+  font-size: 16px !important;
+  border-radius: 14px !important;
+  padding: 14px !important;
+}
+
+.proof-upload-box {
+  border: 2px dashed #ED93B1;
+  background: rgba(255,255,255,0.75);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.proof-preview {
+  margin-top: 16px;
+  display: none;
+}
+
+.proof-preview img {
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.upload-success {
+  margin-top: 10px;
+  color: #d63384;
+  font-weight: 700;
+}
+
 </style>
 
 <div id="confetti-wrap" class="confetti-wrap"></div>
@@ -251,7 +318,7 @@ body {
 
   <div class="hero-pill">June 1 – August 23, 2026</div>
   <h1><span class="sparkle">✨</span> Summer Movement<br>Challenge</h1>
-  <p>A staff wellness initiative by the Staff Engagement Committee</p>
+  <p>A wellness initiative to get you moving this summer</p>
   <div class="hero-tags">
     <span class="hero-tag tag-pink">👥 Team challenge</span>
     <span class="hero-tag tag-mint">🏃 Solo challenge</span>
@@ -467,7 +534,34 @@ body {
       <div class="tab" onclick="switchTab('streak')" id="tab-streak">Streak</div>
     </div>
 
-    <div id="lb-individual">
+    
+<div class="card card-pink">
+  <h2>📸 Show Off Your Activity!</h2>
+
+  <p>
+    Upload a photo of your walk, hike, workout, bike ride,
+    fitness tracker, or summer adventure 🌈
+  </p>
+
+  <div class="proof-upload-box">
+    <input
+      type="file"
+      id="proof-upload"
+      accept="image/*"
+      onchange="previewProof(event)"
+    />
+
+    <div class="upload-success">
+      ✨ Share your wins and inspire the team!
+    </div>
+
+    <div class="proof-preview" id="proof-preview">
+      <img id="proof-image" src="" alt="Activity proof preview" />
+    </div>
+  </div>
+</div>
+
+<div id="lb-individual">
       <div class="lb-item">
         <div class="rank" style="font-size:22px;">🥇</div>
         <div class="avatar av-pink">🦄</div>
