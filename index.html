@@ -606,8 +606,9 @@ h2::after {
   <div class="card card-pink">
     <h2><i class="ti ti-user-plus" aria-hidden="true"></i> Register for the challenge</h2>
     <div class="form-row">
-      <label>Your name</label>
+      <label>Your name <span style="font-size:11px; font-weight:600; background:#FAC775; color:#633806; border-radius:6px; padding:2px 7px; margin-left:4px;">⚠️ Use the same spelling every time</span></label>
       <input type="text" id="reg-name" placeholder="e.g. Alex Chen" />
+      <div style="font-size:11px; color:#72243E; margin-top:4px;">This must match exactly when you log steps — including capitalisation and spacing.</div>
     </div>
     <div class="form-row">
       <label>Team name (optional — max 5 people)</label>
@@ -650,8 +651,9 @@ h2::after {
   <div class="card card-mint">
     <h2><i class="ti ti-shoe" aria-hidden="true"></i> Log your activity</h2>
     <div class="form-row">
-      <label>Your name</label>
+      <label>Your name <span style="font-size:11px; font-weight:600; background:#5DCAA5; color:#04342C; border-radius:6px; padding:2px 7px; margin-left:4px;">⚠️ Must match your registration exactly</span></label>
       <input type="text" id="log-name" placeholder="e.g. Alex Chen" />
+      <div style="font-size:11px; color:#085041; margin-top:4px;">Spelling, capitalisation, and spacing must be identical to how you registered.</div>
     </div>
     <div class="form-row">
       <label>Team name (optional — leave blank if solo)</label>
@@ -734,56 +736,7 @@ h2::after {
 
 
 <div id="lb-individual">
-      <div class="lb-item">
-        <div class="rank" style="font-size:22px;">🥇</div>
-        <div class="avatar av-pink">🦄</div>
-        <div class="lb-info">
-          <div class="lb-name">Sarah R. <span class="badge bdg-sun">Leading!</span></div>
-          <div class="lb-sub">Team: Mighty Movers</div>
-          <div class="pb-wrap"><div class="pb-fill pb-pink" style="width:94%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">284,210</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank">🥈</div>
-        <div class="avatar av-mint">🌈</div>
-        <div class="lb-info">
-          <div class="lb-name">Marcus K.</div>
-          <div class="lb-sub">Solo participant</div>
-          <div class="pb-wrap"><div class="pb-fill pb-mint" style="width:81%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">243,780</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank">🥉</div>
-        <div class="avatar av-sky">🌻</div>
-        <div class="lb-info">
-          <div class="lb-name">Jamie P.</div>
-          <div class="lb-sub">Team: Sun Steppers</div>
-          <div class="pb-wrap"><div class="pb-fill pb-sky" style="width:74%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">221,450</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank" style="font-size:14px; color:var(--color-text-secondary);">4</div>
-        <div class="avatar av-lav">🦋</div>
-        <div class="lb-info">
-          <div class="lb-name">Tina L.</div>
-          <div class="lb-sub">Team: Mighty Movers</div>
-          <div class="pb-wrap"><div class="pb-fill pb-lav" style="width:61%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">183,200</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank" style="font-size:14px; color:var(--color-text-secondary);">5</div>
-        <div class="avatar av-lime">🍓</div>
-        <div class="lb-info">
-          <div class="lb-name">Dev A.</div>
-          <div class="lb-sub">Solo participant</div>
-          <div class="pb-wrap"><div class="pb-fill pb-lime" style="width:52%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">155,900</div><div class="lb-pct">steps</div></div>
-      </div>
+      <div style="text-align:center; padding:2rem; color:#633806; font-size:14px;">⏳ Loading leaderboard…</div>
     </div>
 
     <div id="lb-team" style="display:none;"></div>
@@ -995,7 +948,7 @@ async function saveActivity(data) {
 window.registerParticipant = registerParticipant;
 window.saveActivity = saveActivity;
 
-// Days left — calculated live from today to Sep 30 2026
+// ── Days left ─────────────────────────────────────────────────────────────
 function updateDaysLeft() {
   const end = new Date('2026-09-30T23:59:59');
   const now = new Date();
@@ -1005,188 +958,233 @@ function updateDaysLeft() {
 }
 updateDaysLeft();
 
-// Avatar colour cycling
+// ── Styling helpers ───────────────────────────────────────────────────────
 const avClasses = ['av-pink','av-mint','av-sky','av-lav','av-lime'];
 const pbClasses = ['pb-pink','pb-mint','pb-sky','pb-lav','pb-lime'];
-const emojis = ['🥇','🥈','🥉','✨','🌟','💫','🎉','🌈','☀️','🦄'];
+const medals    = ['🥇','🥈','🥉','✨','🌟','💫','🎉','🌈','☀️','🦄'];
+const teamEmojis = ['🔥','☀️','⛰️','🌊','🌿','🦋','🎯','🌈','🏄','💪'];
 
-// ── Participants snapshot ──────────────────────────────────────────────────
-onSnapshot(collection(db, 'participants'), (snap) => {
-  const el = document.getElementById('stat-participants');
-  if (el) el.textContent = snap.size;
-});
+// ── Shared state: latest snapshots from both collections ──────────────────
+// We keep both in memory and re-render whenever either changes.
+let latestParticipants = []; // [{ name, team, email, challenges }]
+let latestActivities   = []; // [{ name, team, steps, date, ... }]
 
-// ── Activities snapshot — drives individual LB, team LB, streak LB, total steps ──
-onSnapshot(
-  query(collection(db, 'activities'), orderBy('createdAt', 'asc')),
-  (snapshot) => {
-    const allDocs = [];
-    snapshot.forEach(doc => allDocs.push(doc.data()));
+function rebuildAll() {
+  // Build a name → team map from registrations (source of truth for teams)
+  const nameToTeam = {};
+  latestParticipants.forEach(p => {
+    if (p.name && p.team) nameToTeam[p.name.trim()] = p.team.trim();
+  });
 
-    // ── Total steps stat ──────────────────────────────────────────────────
-    const totalSteps = allDocs.reduce((s, d) => s + (d.steps || 0), 0);
-    const stepsEl = document.getElementById('stat-steps');
-    if (stepsEl) {
-      stepsEl.textContent = totalSteps >= 1_000_000
-        ? (totalSteps / 1_000_000).toFixed(1) + 'M'
-        : totalSteps >= 1_000
-          ? (totalSteps / 1_000).toFixed(1) + 'K'
-          : totalSteps.toLocaleString();
+  // ── Total steps stat ────────────────────────────────────────────────────
+  const totalSteps = latestActivities.reduce((s, d) => s + (d.steps || 0), 0);
+  const stepsEl = document.getElementById('stat-steps');
+  if (stepsEl) {
+    stepsEl.textContent = totalSteps >= 1_000_000
+      ? (totalSteps / 1_000_000).toFixed(1) + 'M'
+      : totalSteps >= 1_000
+        ? (totalSteps / 1_000).toFixed(1) + 'K'
+        : totalSteps.toLocaleString();
+  }
+
+  // ── Individual leaderboard ──────────────────────────────────────────────
+  const indivTotals = {};
+  latestActivities.forEach(d => {
+    if (!d.name) return;
+    indivTotals[d.name] = (indivTotals[d.name] || 0) + (d.steps || 0);
+  });
+  const indivSorted = Object.entries(indivTotals)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10);
+  const maxSteps = indivSorted[0]?.[1] || 1;
+
+  const lbIndiv = document.getElementById('lb-individual');
+  if (lbIndiv) {
+    if (indivSorted.length === 0) {
+      lbIndiv.innerHTML = `<div style="text-align:center;padding:2rem;"><div style="font-size:48px;margin-bottom:8px;">🐣</div><p style="font-size:14px;color:#633806;">Be the first to log some summer steps!</p></div>`;
+    } else {
+      lbIndiv.innerHTML = indivSorted.map(([name, steps], i) => {
+        const av   = avClasses[i % avClasses.length];
+        const pb   = pbClasses[i % pbClasses.length];
+        const pct  = Math.round((steps / maxSteps) * 100);
+        const badge = i === 0 ? `<span class="badge bdg-sun">Leading!</span>` : '';
+        const team = nameToTeam[name.trim()];
+        const sub  = team ? `Team: ${team}` : 'Solo participant';
+        return `
+          <div class="lb-item">
+            <div class="rank">${medals[i] || (i+1)}</div>
+            <div class="avatar ${av}">${name.charAt(0).toUpperCase()}</div>
+            <div class="lb-info">
+              <div class="lb-name">${name}${badge}</div>
+              <div class="lb-sub">${sub}</div>
+              <div class="pb-wrap"><div class="pb-fill ${pb}" style="width:${pct}%"></div></div>
+            </div>
+            <div class="lb-right">
+              <div class="lb-steps">${steps.toLocaleString()}</div>
+              <div class="lb-pct">steps</div>
+            </div>
+          </div>`;
+      }).join('');
     }
+  }
 
-    // ── Individual leaderboard ────────────────────────────────────────────
-    const indivTotals = {};
-    allDocs.forEach(d => {
-      if (!d.name) return;
-      indivTotals[d.name] = (indivTotals[d.name] || 0) + (d.steps || 0);
-    });
-    const indivSorted = Object.entries(indivTotals)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 10);
-    const maxSteps = indivSorted[0]?.[1] || 1;
+  // ── Team leaderboard ────────────────────────────────────────────────────
+  // For each activity, resolve the team via:
+  //   1. the activity's own team field (typed at log time), OR
+  //   2. the participant registration lookup by name
+  // This means people who registered with a team but forgot to type it
+  // when logging still get counted correctly.
+  const teamTotals = {}; // teamName → { steps, members: Set }
+  latestActivities.forEach(d => {
+    if (!d.name) return;
+    const resolvedTeam = (d.team && d.team.trim())
+      || nameToTeam[d.name.trim()]
+      || null;
+    if (!resolvedTeam) return;
+    if (!teamTotals[resolvedTeam]) teamTotals[resolvedTeam] = { steps: 0, members: new Set() };
+    teamTotals[resolvedTeam].steps += (d.steps || 0);
+    teamTotals[resolvedTeam].members.add(d.name.trim());
+  });
 
-    const lbIndiv = document.getElementById('lb-individual');
-    if (lbIndiv) {
-      if (indivSorted.length === 0) {
-        lbIndiv.innerHTML = `<div style="text-align:center;padding:2rem;"><div style="font-size:48px;margin-bottom:8px;">🐣</div><p style="font-size:14px;color:#633806;">Be the first to log some summer steps!</p></div>`;
-      } else {
-        lbIndiv.innerHTML = indivSorted.map(([name, steps], i) => {
-          const av = avClasses[i % avClasses.length];
-          const pb = pbClasses[i % pbClasses.length];
-          const pct = Math.round((steps / maxSteps) * 100);
-          const badge = i === 0 ? `<span class="badge bdg-sun">Leading!</span>` : '';
-          return `
-            <div class="lb-item">
-              <div class="rank">${emojis[i] || (i+1)}</div>
-              <div class="avatar ${av}">${name.charAt(0).toUpperCase()}</div>
-              <div class="lb-info">
-                <div class="lb-name">${name}${badge}</div>
-                <div class="lb-sub">Participant</div>
-                <div class="pb-wrap"><div class="pb-fill ${pb}" style="width:${pct}%"></div></div>
-              </div>
-              <div class="lb-right">
-                <div class="lb-steps">${steps.toLocaleString()}</div>
-                <div class="lb-pct">steps</div>
-              </div>
-            </div>`;
-        }).join('');
-      }
+  const teamSorted = Object.entries(teamTotals)
+    .sort((a, b) => b[1].steps - a[1].steps)
+    .slice(0, 10);
+  const maxTeam = teamSorted[0]?.[1].steps || 1;
+
+  const lbTeam = document.getElementById('lb-team');
+  if (lbTeam) {
+    if (teamSorted.length === 0) {
+      lbTeam.innerHTML = `<div style="text-align:center;padding:2rem;"><div style="font-size:48px;margin-bottom:8px;">👥</div><p style="font-size:14px;color:#633806;">No teams yet — register with a team name to get started!</p></div>`;
+    } else {
+      lbTeam.innerHTML = teamSorted.map(([teamName, info], i) => {
+        const av  = avClasses[i % avClasses.length];
+        const pb  = pbClasses[i % pbClasses.length];
+        const pct = Math.round((info.steps / maxTeam) * 100);
+        const badge = i === 0 ? `<span class="badge bdg-sun">1st!</span>` : '';
+        const memberCount = info.members.size;
+        const steps = info.steps;
+        const display = steps >= 1_000_000
+          ? (steps / 1_000_000).toFixed(1) + 'M'
+          : steps >= 1_000 ? (steps / 1_000).toFixed(1) + 'K'
+          : steps.toLocaleString();
+        // Show member names as a subtitle
+        const memberList = [...info.members].join(', ');
+        return `
+          <div class="lb-item">
+            <div class="rank">${medals[i] || (i+1)}</div>
+            <div class="avatar ${av}" style="border-radius:10px;">${teamEmojis[i]}</div>
+            <div class="lb-info">
+              <div class="lb-name">${teamName}${badge}</div>
+              <div class="lb-sub" title="${memberList}">${memberCount} member${memberCount !== 1 ? 's' : ''}: ${memberList}</div>
+              <div class="pb-wrap"><div class="pb-fill ${pb}" style="width:${pct}%"></div></div>
+            </div>
+            <div class="lb-right">
+              <div class="lb-steps">${display}</div>
+              <div class="lb-pct">steps</div>
+            </div>
+          </div>`;
+      }).join('');
     }
+  }
 
-    // ── Team leaderboard ──────────────────────────────────────────────────
-    // Build team totals from activities where team is recorded,
-    // merged with participant team assignments
-    const teamTotals = {};   // teamName -> { steps, members: Set }
-    allDocs.forEach(d => {
-      const t = d.team;
-      if (!t) return;
-      if (!teamTotals[t]) teamTotals[t] = { steps: 0, members: new Set() };
-      teamTotals[t].steps += (d.steps || 0);
-      if (d.name) teamTotals[t].members.add(d.name);
-    });
-    const teamSorted = Object.entries(teamTotals)
-      .sort((a, b) => b[1].steps - a[1].steps)
-      .slice(0, 10);
-    const maxTeam = teamSorted[0]?.[1].steps || 1;
-    const teamEmojis = ['🔥','☀️','⛰️','🌊','🌿','🦋','🎯','🌈','🏄','💪'];
+  // ── Streak leaderboard ──────────────────────────────────────────────────
+  // Shows the CURRENT ACTIVE streak running up to today.
+  // A streak is alive if the person logged ≥10,000 steps yesterday OR today.
+  // If neither yesterday nor today has a qualifying entry, their active streak is 0.
+  const byPersonDate = {};
+  latestActivities.forEach(d => {
+    if (!d.name || !d.date) return;
+    if (!byPersonDate[d.name]) byPersonDate[d.name] = {};
+    byPersonDate[d.name][d.date] = (byPersonDate[d.name][d.date] || 0) + (d.steps || 0);
+  });
 
-    const lbTeam = document.getElementById('lb-team');
-    if (lbTeam) {
-      if (teamSorted.length === 0) {
-        lbTeam.innerHTML = `<div style="text-align:center;padding:2rem;"><div style="font-size:48px;margin-bottom:8px;">👥</div><p style="font-size:14px;color:#633806;">No team data yet — log steps with a team name!</p></div>`;
-      } else {
-        lbTeam.innerHTML = teamSorted.map(([name, info], i) => {
-          const av = avClasses[i % avClasses.length];
-          const pb = pbClasses[i % pbClasses.length];
-          const pct = Math.round((info.steps / maxTeam) * 100);
-          const badge = i === 0 ? `<span class="badge bdg-sun">1st!</span>` : '';
-          const memberCount = info.members.size;
-          const steps = info.steps;
-          const display = steps >= 1_000_000
-            ? (steps / 1_000_000).toFixed(1) + 'M'
-            : steps >= 1_000 ? (steps / 1_000).toFixed(1) + 'K'
-            : steps.toLocaleString();
-          return `
-            <div class="lb-item">
-              <div class="rank">${emojis[i] || (i+1)}</div>
-              <div class="avatar ${av}" style="border-radius:10px;">${teamEmojis[i]}</div>
-              <div class="lb-info">
-                <div class="lb-name">${name}${badge}</div>
-                <div class="lb-sub">${memberCount} member${memberCount !== 1 ? 's' : ''}</div>
-                <div class="pb-wrap"><div class="pb-fill ${pb}" style="width:${pct}%"></div></div>
-              </div>
-              <div class="lb-right">
-                <div class="lb-steps">${display}</div>
-                <div class="lb-pct">steps</div>
-              </div>
-            </div>`;
-        }).join('');
-      }
-    }
+  function toYMD(date) {
+    // Returns YYYY-MM-DD for a Date object in local time
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
 
-    // ── Streak leaderboard ────────────────────────────────────────────────
-    // Group activities by person and date, find longest consecutive run of
-    // days where that person logged >= 10,000 steps
-    const byPersonDate = {};
-    allDocs.forEach(d => {
-      if (!d.name || !d.date) return;
-      const key = d.name;
-      if (!byPersonDate[key]) byPersonDate[key] = {};
-      byPersonDate[key][d.date] = (byPersonDate[key][d.date] || 0) + (d.steps || 0);
-    });
-
-    function longestStreak(dateStepMap) {
-      const days = Object.entries(dateStepMap)
+  function activeStreak(dateStepMap) {
+    // Only days with ≥10,000 steps count
+    const qualifyingDays = new Set(
+      Object.entries(dateStepMap)
         .filter(([, s]) => s >= 10000)
         .map(([d]) => d)
-        .sort();
-      if (!days.length) return 0;
-      let best = 1, cur = 1;
-      for (let i = 1; i < days.length; i++) {
-        const prev = new Date(days[i-1]);
-        const curr = new Date(days[i]);
-        const diff = (curr - prev) / 86400000;
-        cur = diff === 1 ? cur + 1 : 1;
-        if (cur > best) best = cur;
-      }
-      return best;
-    }
+    );
+    if (qualifyingDays.size === 0) return 0;
 
-    const streaks = Object.entries(byPersonDate)
-      .map(([name, map]) => ({ name, streak: longestStreak(map) }))
-      .filter(x => x.streak > 0)
-      .sort((a, b) => b.streak - a.streak)
-      .slice(0, 5);
+    const today = toYMD(new Date());
+    const yesterday = toYMD(new Date(Date.now() - 86400000));
 
-    const lbStreak = document.getElementById('lb-streak');
-    if (lbStreak) {
-      const intro = `<p style="font-size:12px;color:#633806;margin-bottom:12px;">Longest unbroken daily streak of 10,000+ steps. One winner takes the prize.</p>`;
-      if (streaks.length === 0) {
-        lbStreak.innerHTML = intro + `<div style="text-align:center;padding:1.5rem;"><div style="font-size:48px;margin-bottom:8px;">🔥</div><p style="font-size:14px;color:#633806;">No streaks yet — start hitting 10K daily!</p></div>`;
-      } else {
-        lbStreak.innerHTML = intro + streaks.map(({ name, streak }, i) => {
-          const av = avClasses[i % avClasses.length];
-          const badge = i === 0 ? `<span class="badge bdg-sun">Leading!</span>` : '';
-          return `
-            <div class="lb-item">
-              <div class="rank">${i === 0 ? '🥇' : i+1}</div>
-              <div class="avatar ${av}">${name.charAt(0).toUpperCase()}</div>
-              <div class="lb-info">
-                <div class="lb-name">${name}${badge}</div>
-                <div class="lb-sub">Days with 10,000+ steps</div>
-              </div>
-              <div class="lb-right">
-                <div class="lb-steps">${streak} day${streak !== 1 ? 's' : ''}</div>
-                <div class="lb-pct">streak</div>
-              </div>
-            </div>`;
-        }).join('');
-      }
+    // Streak must be alive as of today or yesterday
+    if (!qualifyingDays.has(today) && !qualifyingDays.has(yesterday)) return 0;
+
+    // Walk backwards from today counting consecutive qualifying days
+    let count = 0;
+    const cursor = new Date();
+    // Start from today; if today isn't logged yet, start from yesterday
+    if (!qualifyingDays.has(today)) {
+      cursor.setDate(cursor.getDate() - 1);
     }
+    while (qualifyingDays.has(toYMD(cursor))) {
+      count++;
+      cursor.setDate(cursor.getDate() - 1);
+    }
+    return count;
+  }
+
+  const streaks = Object.entries(byPersonDate)
+    .map(([name, map]) => ({ name, streak: activeStreak(map) }))
+    .filter(x => x.streak > 0)
+    .sort((a, b) => b.streak - a.streak)
+    .slice(0, 5);
+
+  const lbStreak = document.getElementById('lb-streak');
+  if (lbStreak) {
+    const intro = `<p style="font-size:12px;color:#633806;margin-bottom:12px;">Current active streak of 10,000+ steps per day. Streak resets if you miss a day — must have logged today or yesterday to appear here.</p>`;
+    if (streaks.length === 0) {
+      lbStreak.innerHTML = intro + `<div style="text-align:center;padding:1.5rem;"><div style="font-size:48px;margin-bottom:8px;">🔥</div><p style="font-size:14px;color:#633806;">No active streaks yet — log 10K steps today to get started!</p></div>`;
+    } else {
+      lbStreak.innerHTML = intro + streaks.map(({ name, streak }, i) => {
+        const av = avClasses[i % avClasses.length];
+        const badge = i === 0 ? `<span class="badge bdg-sun">Leading!</span>` : '';
+        return `
+          <div class="lb-item">
+            <div class="rank">${i === 0 ? '🥇' : i+1}</div>
+            <div class="avatar ${av}">${name.charAt(0).toUpperCase()}</div>
+            <div class="lb-info">
+              <div class="lb-name">${name}${badge}</div>
+              <div class="lb-sub">Days with 10,000+ steps</div>
+            </div>
+            <div class="lb-right">
+              <div class="lb-steps">${streak} day${streak !== 1 ? 's' : ''}</div>
+              <div class="lb-pct">streak</div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+  }
+}
+
+// ── Participants listener ─────────────────────────────────────────────────
+onSnapshot(collection(db, 'participants'), (snap) => {
+  latestParticipants = snap.docs.map(d => d.data());
+  const el = document.getElementById('stat-participants');
+  if (el) el.textContent = snap.size;
+  rebuildAll(); // re-render with updated team map
+});
+
+// ── Activities listener ───────────────────────────────────────────────────
+onSnapshot(
+  query(collection(db, 'activities'), orderBy('createdAt', 'asc')),
+  (snap) => {
+    latestActivities = snap.docs.map(d => d.data());
+    rebuildAll(); // re-render with updated activity data
   }
 );
 </script>
 
--e 
 </body>
 </html>
