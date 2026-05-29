@@ -910,6 +910,7 @@ h2::after {
     setTimeout(() => wrap.innerHTML = '', 5500);
   }
   document.getElementById('log-date').value = new Date().toISOString().split('T')[0];
+
 </script>
 
 
@@ -1029,21 +1030,32 @@ function rebuildAll() {
   }
 
   // ── Team leaderboard ────────────────────────────────────────────────────
-  // For each activity, resolve the team via:
-  //   1. the activity's own team field (typed at log time), OR
-  //   2. the participant registration lookup by name
-  // This means people who registered with a team but forgot to type it
-  // when logging still get counted correctly.
-  const teamTotals = {}; // teamName → { steps, members: Set }
+  // Seed teams from registrations first — every registered team member
+  // appears regardless of whether they've logged steps yet.
+  const teamTotals = {}; // teamName → { steps, members: Map<name, steps> }
+
+  // Step 1: register all team members from participants collection
+  latestParticipants.forEach(p => {
+    const name = p.name && p.name.trim();
+    const team = p.team && p.team.trim();
+    if (!name || !team) return;
+    if (!teamTotals[team]) teamTotals[team] = { steps: 0, members: new Map() };
+    if (!teamTotals[team].members.has(name)) {
+      teamTotals[team].members.set(name, 0); // start at 0 until activities come in
+    }
+  });
+
+  // Step 2: add activity steps — resolve team from activity field OR registration lookup
   latestActivities.forEach(d => {
-    if (!d.name) return;
-    const resolvedTeam = (d.team && d.team.trim())
-      || nameToTeam[d.name.trim()]
-      || null;
+    const name = d.name && d.name.trim();
+    if (!name) return;
+    const resolvedTeam = (d.team && d.team.trim()) || nameToTeam[name] || null;
     if (!resolvedTeam) return;
-    if (!teamTotals[resolvedTeam]) teamTotals[resolvedTeam] = { steps: 0, members: new Set() };
+    if (!teamTotals[resolvedTeam]) teamTotals[resolvedTeam] = { steps: 0, members: new Map() };
     teamTotals[resolvedTeam].steps += (d.steps || 0);
-    teamTotals[resolvedTeam].members.add(d.name.trim());
+    // Update this member's personal step count within the team
+    const prev = teamTotals[resolvedTeam].members.get(name) || 0;
+    teamTotals[resolvedTeam].members.set(name, prev + (d.steps || 0));
   });
 
   const teamSorted = Object.entries(teamTotals)
@@ -1067,8 +1079,9 @@ function rebuildAll() {
           ? (steps / 1_000_000).toFixed(1) + 'M'
           : steps >= 1_000 ? (steps / 1_000).toFixed(1) + 'K'
           : steps.toLocaleString();
-        // Show member names as a subtitle
-        const memberList = [...info.members].join(', ');
+        const memberList = [...info.members.entries()].map(([n, s]) =>
+          s > 0 ? `${n} (${s.toLocaleString()})` : `${n} <span style="opacity:0.55;font-size:10px;">no steps yet</span>`
+        ).join(' · ');
         return `
           <div class="lb-item">
             <div class="rank">${medals[i] || (i+1)}</div>
@@ -1166,7 +1179,8 @@ function rebuildAll() {
       }).join('');
     }
   }
-}
+
+} // end rebuildAll
 
 // ── Participants listener ─────────────────────────────────────────────────
 onSnapshot(collection(db, 'participants'), (snap) => {
