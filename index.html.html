@@ -1,4 +1,14 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summer Movement Challenge 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 .hero { background: #FAEEDA; border-radius: 20px; padding: 2.5rem 2rem 2rem; text-align: center; margin-bottom: 1.5rem; border: 2px solid #FAC775; position: relative; overflow: hidden; }
@@ -232,10 +242,249 @@ body {
   50% { transform: rotate(10deg) scale(1.15); }
 }
 
+
+body {
+  font-family: 'Nunito', sans-serif !important;
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  color: #2d3748;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Nunito', sans-serif !important;
+  letter-spacing: -0.02em;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 6vw, 4.8rem) !important;
+  line-height: 1.08 !important;
+  font-weight: 800 !important;
+}
+
+.hero-subtitle,
+.hero p,
+.card p,
+.lb-sub,
+label,
+input,
+select,
+button {
+  font-size: 1.05rem !important;
+}
+
+.card {
+  border-radius: 20px !important;
+  padding: 1.5rem !important;
+}
+
+input, select, textarea {
+  font-size: 16px !important;
+  border-radius: 14px !important;
+  padding: 14px !important;
+}
+
+.proof-upload-box {
+  border: 2px dashed #ED93B1;
+  background: rgba(255,255,255,0.75);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.proof-preview {
+  margin-top: 16px;
+  display: none;
+}
+
+.proof-preview img {
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.upload-success {
+  margin-top: 10px;
+  color: #d63384;
+  font-weight: 700;
+}
+
+
+.section-title,
+.card h2,
+.card h3,
+h2 {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem !important;
+  color: #2d3748 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.card h3 {
+  font-size: 1.45rem !important;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 7vw, 5rem) !important;
+}
+
+.section-title::after,
+.card h2::after,
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ED93B1, #85B7EB);
+  margin-top: 10px;
+}
+
+.card {
+  box-shadow: 0 10px 28px rgba(0,0,0,0.06) !important;
+}
+
+/* ── Wrapper ─────────────────────────────────────────────────────────── */
+.page-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px 16px 80px;
+}
+
+/* ── Bottom nav bar (mobile) ─────────────────────────────────────────── */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #fffdf9;
+  border-top: 1.5px solid #FAC775;
+  z-index: 200;
+  padding: 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
+}
+.bottom-nav-inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.bnav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #9e7a56;
+  gap: 4px;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.bnav-btn .bicon { font-size: 20px; line-height: 1; }
+.bnav-btn.active { color: #c2410c; }
+.bnav-btn.active .bicon-sun  { filter: drop-shadow(0 0 4px #FAC77599); }
+.bnav-btn.active .bicon-pink { filter: drop-shadow(0 0 4px #ED93B199); }
+.bnav-btn.active .bicon-mint { filter: drop-shadow(0 0 4px #5DCAA599); }
+.bnav-btn.active .bicon-sky  { filter: drop-shadow(0 0 4px #85B7EB99); }
+
+/* ── Mobile breakpoint ───────────────────────────────────────────────── */
+@media (max-width: 600px) {
+
+  /* hide desktop top nav, show bottom bar */
+  .nav { display: none; }
+  .bottom-nav { display: block; }
+
+  /* page padding + extra bottom space for nav bar */
+  .page-wrap { padding: 12px 12px 90px; }
+
+  /* hero */
+  .hero { padding: 2rem 1.25rem 1.5rem; border-radius: 16px; }
+  .hero h1 { font-size: clamp(1.6rem, 7vw, 2.2rem) !important; }
+  .hero p   { font-size: 0.9rem !important; }
+  .hero-float { font-size: 20px; }
+  .float-1 { top: 10px; left: 12px; }
+  .float-2 { top: 12px; right: 14px; }
+  .float-3 { bottom: 12px; left: 28px; }
+  .float-4 { bottom: 10px; right: 32px; }
+
+  /* summer banner */
+  .summer-banner { font-size: 11px; padding: 8px 10px; }
+
+  /* cards */
+  .card { padding: 1rem !important; border-radius: 16px !important; }
+  .card h2 { font-size: 1.1rem !important; }
+  .card h3 { font-size: 0.95rem !important; }
+  .card p  { font-size: 0.9rem !important; }
+
+  /* how-to grid: stack to 1 col on very small, 2 on medium mobile */
+  .how-grid        { grid-template-columns: 1fr; }
+  .challenge-grid  { grid-template-columns: 1fr; }
+
+  /* act pill grid: 2 cols */
+  .act-grid { grid-template-columns: 1fr 1fr; }
+
+  /* stats */
+  .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stat-val   { font-size: 18px; }
+  .stat-label { font-size: 10px; }
+
+  /* forms: bigger touch targets */
+  input, select, textarea {
+    font-size: 16px !important;  /* prevents iOS zoom */
+    padding: 13px 12px !important;
+    border-radius: 12px !important;
+  }
+  .submit-btn { padding: 14px 20px !important; font-size: 1rem !important; }
+
+  /* leaderboard items */
+  .lb-item { gap: 8px; padding: 10px 0; }
+  .avatar  { width: 34px; height: 34px; font-size: 12px; }
+  .rank    { width: 28px; font-size: 16px; }
+  .lb-name { font-size: 13px; }
+  .lb-steps { font-size: 13px; }
+
+  /* tabs */
+  .tab { font-size: 12px; padding: 7px 4px; }
+
+  /* ext link full width on mobile */
+  .ext-link { width: 100%; justify-content: center; }
+
+  /* hero tags smaller */
+  .hero-tag { font-size: 11px; padding: 4px 10px; }
+
+  /* step rows in how-to */
+  .step-row { font-size: 13px; }
+
+  /* prize rows */
+  .prize-row { font-size: 12px; padding: 9px 10px; }
+
+  /* faq */
+  .faq-q, .faq-a { font-size: 13px; }
+
+  /* headings after-bar */
+  .section-title::after, .card h2::after, h2::after {
+    width: 40px; height: 4px;
+  }
+}
+
+/* ── Tablets: keep top nav but tighten layout ────────────────────────── */
+@media (min-width: 601px) and (max-width: 820px) {
+  .page-wrap { padding: 16px 20px 40px; }
+  .how-grid       { grid-template-columns: repeat(2, 1fr); }
+  .challenge-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 </style>
 
 <div id="confetti-wrap" class="confetti-wrap"></div>
 
+<div class="page-wrap">
 
 <div class="summer-banner">
   🌞 Stay active • 💖 Have fun • 🏆 Win prizes • 🍉 Enjoy summer
@@ -249,9 +498,9 @@ body {
   <div class="hero-float float-3">🦩</div>
   <div class="hero-float float-4">🍉</div>
 
-  <div class="hero-pill">June 1 – August 23, 2026</div>
+  <div class="hero-pill">June 1 – September 30, 2026</div>
   <h1><span class="sparkle">✨</span> Summer Movement<br>Challenge</h1>
-  <p>A staff wellness initiative by the Staff Engagement Committee</p>
+  <p>A wellness initiative to get you moving this summer</p>
   <div class="hero-tags">
     <span class="hero-tag tag-pink">👥 Team challenge</span>
     <span class="hero-tag tag-mint">🏃 Solo challenge</span>
@@ -264,12 +513,13 @@ body {
   <button class="nav-btn nb-pink" onclick="showSection('register')" id="nav-register"><i class="ti ti-user-plus" aria-hidden="true"></i> Join up</button>
   <button class="nav-btn nb-mint" onclick="showSection('log')" id="nav-log"><i class="ti ti-shoe" aria-hidden="true"></i> Log steps</button>
   <button class="nav-btn nb-sky" onclick="showSection('leaderboard')" id="nav-leaderboard"><i class="ti ti-trophy" aria-hidden="true"></i> Leaderboard</button>
+  <button class="nav-btn nb-pink" onclick="showSection('gallery')" id="nav-gallery"><i class="ti ti-photo" aria-hidden="true"></i> Photos</button>
 </div>
 
 <div id="section-about" class="section active">
   <div class="card card-sun">
     <h2><i class="ti ti-sun" aria-hidden="true"></i> ✨ What is the Summer Movement Challenge?</h2>
-    <p style="font-size:14px; color:#633806; line-height:1.7; margin-bottom:1rem;">The Summer Movement Challenge is a fun, staff-wide wellness initiative running from <strong style="color:#412402;">June 1 to August 23, 2026</strong>. All movement counts — not just walking! Cycling, swimming, yoga, kayaking, hiking, and fitness classes all convert to steps so everyone can join in no matter how they like to move.</p>
+    <p style="font-size:14px; color:#633806; line-height:1.7; margin-bottom:1rem;">The Summer Movement Challenge is a fun wellness initiative running from <strong style="color:#412402;">June 1 to September 30, 2026</strong>. All movement counts — not just walking! Cycling, swimming, yoga, kayaking, hiking, and fitness classes all convert to steps so everyone can join in no matter how they like to move.</p>
     <p style="font-size:14px; color:#633806; line-height:1.7;">You can join one, two, or all three challenges — as an individual, part of a team, or both at once.</p>
   </div>
 
@@ -320,7 +570,6 @@ body {
     <div class="prize-row pr-sun">🏆 Top 2 teams win a prize</div>
     <div class="prize-row pr-pink">🏅 Top 3 solo individuals win a prize</div>
     <div class="prize-row pr-mint">🎯 The person with the longest 10K-a-day streak wins</div>
-    <div class="prize-row pr-lav">🎁 One midway surprise giveaway during the summer</div>
   </div>
 
   <div class="card card-sun">
@@ -343,7 +592,7 @@ body {
     </div>
     <div class="faq-item" style="margin-bottom:0;">
       <div class="faq-q"><span class="faq-dot">&#9679;</span> How do I track my progress?</div>
-      <div class="faq-a">Record your steps here and submit every two weeks. Remember to convert any activity to steps first.</div>
+      <div class="faq-a">Record your steps in the Log Steps section and include a photo with each submission. Remember to check the steps conversion before logging.</div>
     </div>
   </div>
 
@@ -358,8 +607,9 @@ body {
   <div class="card card-pink">
     <h2><i class="ti ti-user-plus" aria-hidden="true"></i> Register for the challenge</h2>
     <div class="form-row">
-      <label>Your name</label>
+      <label>Your name <span style="font-size:11px; font-weight:600; background:#FAC775; color:#633806; border-radius:6px; padding:2px 7px; margin-left:4px;">⚠️ Use the same spelling every time</span></label>
       <input type="text" id="reg-name" placeholder="e.g. Alex Chen" />
+      <div style="font-size:11px; color:#72243E; margin-top:4px;">This must match exactly when you log steps — including capitalisation and spacing.</div>
     </div>
     <div class="form-row">
       <label>Team name (optional — max 5 people)</label>
@@ -403,7 +653,14 @@ body {
     <h2><i class="ti ti-shoe" aria-hidden="true"></i> Log your activity</h2>
     <div class="form-row">
       <label>Your name</label>
-      <input type="text" id="log-name" placeholder="e.g. Alex Chen" />
+      <select id="log-name">
+        <option value="">— Select your name —</option>
+      </select>
+      <div style="font-size:11px; color:#085041; margin-top:4px;">Don't see your name? Make sure you've registered first in "Join up".</div>
+    </div>
+    <div class="form-row">
+      <label>Team</label>
+      <input type="text" id="log-team" placeholder="Auto-filled from your registration" readonly style="background:#F0F0F0; color:#555;" />
     </div>
     <div class="form-row">
       <label>Activity type</label>
@@ -442,21 +699,34 @@ body {
       <i class="ti ti-external-link" aria-hidden="true"></i> Full activity conversion chart
     </a>
   </div>
+
+  <div class="card card-pink">
+    <h2>📸 Show Off Your Activity!</h2>
+    <p>Share a photo of your walk, hike, workout, bike ride, fitness tracker, or summer adventure 🌈</p>
+    <div style="margin-top: 16px; text-align: center;">
+      <a href="https://forms.gle/1cNxyoVAwNkET3rV7" target="_blank"
+        class="submit-btn"
+        style="display:inline-flex; align-items:center; justify-content:center; gap:8px; background:#ED93B1; color:#4B1528; text-decoration:none; max-width:320px;">
+        📸 Share your activity photo
+      </a>
+      <p style="font-size:12px; color:#72243E; margin-top:10px; opacity:0.8;">Opens a Google Form — takes 30 seconds!</p>
+    </div>
+  </div>
 </div>
 
 <div id="section-leaderboard" class="section">
   <div class="stats-grid">
     <div class="stat-card sc-sun">
       <div class="stat-label"><i class="ti ti-users" aria-hidden="true"></i> Participants</div>
-      <div class="stat-val">47</div>
+      <div class="stat-val" id="stat-participants">—</div>
     </div>
     <div class="stat-card sc-sky">
       <div class="stat-label"><i class="ti ti-shoe" aria-hidden="true"></i> Total steps</div>
-      <div class="stat-val">2.1M</div>
+      <div class="stat-val" id="stat-steps">—</div>
     </div>
     <div class="stat-card sc-mint">
       <div class="stat-label"><i class="ti ti-calendar" aria-hidden="true"></i> Days left</div>
-      <div class="stat-val">88</div>
+      <div class="stat-val" id="stat-days">—</div>
     </div>
   </div>
 
@@ -467,124 +737,94 @@ body {
       <div class="tab" onclick="switchTab('streak')" id="tab-streak">Streak</div>
     </div>
 
-    <div id="lb-individual">
-      <div class="lb-item">
-        <div class="rank" style="font-size:22px;">🥇</div>
-        <div class="avatar av-pink">🦄</div>
-        <div class="lb-info">
-          <div class="lb-name">Sarah R. <span class="badge bdg-sun">Leading!</span></div>
-          <div class="lb-sub">Team: Mighty Movers</div>
-          <div class="pb-wrap"><div class="pb-fill pb-pink" style="width:94%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">284,210</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank">🥈</div>
-        <div class="avatar av-mint">🌈</div>
-        <div class="lb-info">
-          <div class="lb-name">Marcus K.</div>
-          <div class="lb-sub">Solo participant</div>
-          <div class="pb-wrap"><div class="pb-fill pb-mint" style="width:81%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">243,780</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank">🥉</div>
-        <div class="avatar av-sky">🌻</div>
-        <div class="lb-info">
-          <div class="lb-name">Jamie P.</div>
-          <div class="lb-sub">Team: Sun Steppers</div>
-          <div class="pb-wrap"><div class="pb-fill pb-sky" style="width:74%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">221,450</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank" style="font-size:14px; color:var(--color-text-secondary);">4</div>
-        <div class="avatar av-lav">🦋</div>
-        <div class="lb-info">
-          <div class="lb-name">Tina L.</div>
-          <div class="lb-sub">Team: Mighty Movers</div>
-          <div class="pb-wrap"><div class="pb-fill pb-lav" style="width:61%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">183,200</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank" style="font-size:14px; color:var(--color-text-secondary);">5</div>
-        <div class="avatar av-lime">🍓</div>
-        <div class="lb-info">
-          <div class="lb-name">Dev A.</div>
-          <div class="lb-sub">Solo participant</div>
-          <div class="pb-wrap"><div class="pb-fill pb-lime" style="width:52%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">155,900</div><div class="lb-pct">steps</div></div>
-      </div>
+
+<div id="lb-individual">
+      <div style="text-align:center; padding:2rem; color:#633806; font-size:14px;">⏳ Loading leaderboard…</div>
     </div>
 
-    <div id="lb-team" style="display:none;">
-      <div class="lb-item">
-        <div class="rank" style="font-size:22px;">🥇</div>
-        <div class="avatar av-pink" style="border-radius:10px;">🔥</div>
-        <div class="lb-info">
-          <div class="lb-name">Mighty Movers <span class="badge bdg-sun">1st!</span></div>
-          <div class="lb-sub">5 members</div>
-          <div class="pb-wrap"><div class="pb-fill pb-pink" style="width:89%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">1.2M</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank">🥈</div>
-        <div class="avatar av-mint" style="border-radius:10px;">☀️</div>
-        <div class="lb-info">
-          <div class="lb-name">Sun Steppers</div>
-          <div class="lb-sub">4 members</div>
-          <div class="pb-wrap"><div class="pb-fill pb-mint" style="width:72%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">980K</div><div class="lb-pct">steps</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank" style="font-size:14px; color:var(--color-text-secondary);">3</div>
-        <div class="avatar av-sky" style="border-radius:10px;">⛰️</div>
-        <div class="lb-info">
-          <div class="lb-name">Peak Performers</div>
-          <div class="lb-sub">3 members</div>
-          <div class="pb-wrap"><div class="pb-fill pb-sky" style="width:58%"></div></div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">786K</div><div class="lb-pct">steps</div></div>
-      </div>
-    </div>
+    <div id="lb-team" style="display:none;"></div>
 
     <div id="lb-streak" style="display:none;">
       <p style="font-size:12px; color:#633806; margin-bottom:12px;">Longest unbroken daily streak of 10,000+ steps. One winner takes the prize.</p>
-      <div class="lb-item">
-        <div class="rank" style="font-size:22px;">🥇</div>
-        <div class="avatar av-mint">🌈</div>
-        <div class="lb-info">
-          <div class="lb-name">Marcus K. <span class="badge bdg-sun">Leading!</span></div>
-          <div class="lb-sub">Unbroken since June 1</div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">56 days</div><div class="lb-pct">streak</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank">2</div>
-        <div class="avatar av-pink">🦄</div>
-        <div class="lb-info">
-          <div class="lb-name">Sarah R.</div>
-          <div class="lb-sub">Streak broken July 22</div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">51 days</div><div class="lb-pct">streak</div></div>
-      </div>
-      <div class="lb-item">
-        <div class="rank">3</div>
-        <div class="avatar av-lav">🦋</div>
-        <div class="lb-info">
-          <div class="lb-name">Tina L.</div>
-          <div class="lb-sub">Streak broken July 14</div>
-        </div>
-        <div class="lb-right"><div class="lb-steps">43 days</div><div class="lb-pct">streak</div></div>
+    </div>
+  </div><!-- /section-leaderboard -->
+
+  <div id="section-gallery" class="section">
+    <div class="card card-pink">
+      <h2>📸 Activity photo gallery</h2>
+      <p style="font-size:13px; color:#72243E; margin-bottom:1rem;">Photos shared by participants throughout the challenge!</p>
+      <div id="gallery-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:10px;">
+        <div style="text-align:center; padding:2rem; grid-column:1/-1; color:#72243E; font-size:13px;">⏳ Loading photos…</div>
       </div>
     </div>
+    <div class="card card-mint" style="text-align:center;">
+      <p style="font-size:13px; color:#085041; margin-bottom:12px;">Want to add your own photo?</p>
+      <a href="https://forms.gle/1cNxyoVAwNkET3rV7" target="_blank"
+        class="submit-btn"
+        style="display:inline-flex; align-items:center; justify-content:center; gap:8px; background:#5DCAA5; color:#04342C; text-decoration:none; max-width:280px;">
+        📸 Share your activity photo
+      </a>
+    </div>
+  </div><!-- /section-gallery -->
+
+  <div style="text-align:center; margin-top:-0.5rem; margin-bottom:1.5rem;">
+    <a href="javascript:void(0)" onclick="showSection('admin')" style="font-size:11px; color:#AFA9EC; text-decoration:none;">organizer access</a>
   </div>
-</div>
+
+  <div id="section-admin" class="section">
+    <div class="card card-lav">
+      <h2 style="color:#26215C;"><i class="ti ti-lock" aria-hidden="true"></i> Admin access</h2>
+      <p style="font-size:13px; color:#3C3489; margin-bottom:1rem;">This area is for challenge organizers only. Enter the admin password to manage entries.</p>
+      <div class="form-row">
+        <input type="password" id="admin-password" placeholder="Admin password" />
+      </div>
+      <button class="submit-btn" style="background:#AFA9EC; color:#26215C;" onclick="checkAdminPassword()">
+        <i class="ti ti-key" aria-hidden="true"></i> Unlock
+      </button>
+      <p id="admin-pw-error" style="font-size:12px; color:#D4537E; margin-top:8px; display:none;">Incorrect password. Please try again.</p>
+    </div>
+
+    <div id="admin-panel-content" style="display:none;">
+      <div class="card card-pink">
+        <h2><i class="ti ti-shoe" aria-hidden="true"></i> Activity entries</h2>
+        <p style="font-size:12px; color:#72243E; margin-bottom:1rem;">Sorted by step count, highest first. Delete any entry that looks wrong.</p>
+        <div id="admin-activities-list" style="font-size:13px;"></div>
+      </div>
+
+      <div class="card card-sky">
+        <h2 style="color:#042C53;"><i class="ti ti-users" aria-hidden="true"></i> Registered participants</h2>
+        <div id="admin-participants-list" style="font-size:13px;"></div>
+      </div>
+    </div>
+  </div><!-- /section-admin -->
+
+</div><!-- /page-wrap -->
+
+<!-- Mobile bottom nav -->
+<nav class="bottom-nav" aria-label="Main navigation">
+  <div class="bottom-nav-inner">
+    <button class="bnav-btn active" onclick="showSection('about')" id="bnav-about">
+      <span class="bicon bicon-sun">☀️</span>
+      <span>About</span>
+    </button>
+    <button class="bnav-btn" onclick="showSection('register')" id="bnav-register">
+      <span class="bicon bicon-pink">💖</span>
+      <span>Join up</span>
+    </button>
+    <button class="bnav-btn" onclick="showSection('log')" id="bnav-log">
+      <span class="bicon bicon-mint">👟</span>
+      <span>Log steps</span>
+    </button>
+    <button class="bnav-btn" onclick="showSection('leaderboard')" id="bnav-leaderboard">
+      <span class="bicon bicon-sky">🏆</span>
+      <span>Leaderboard</span>
+    </button>
+    <button class="bnav-btn" onclick="showSection('gallery')" id="bnav-gallery">
+      <span class="bicon bicon-pink">📸</span>
+      <span>Photos</span>
+    </button>
+  </div>
+</nav>
 
 <script>
   const challenges = { team: false, solo: false, steps: false };
@@ -592,8 +832,13 @@ body {
   function showSection(n) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.bnav-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('section-' + n).classList.add('active');
-    document.getElementById('nav-' + n).classList.add('active');
+    const navBtn = document.getElementById('nav-' + n);
+    if (navBtn) navBtn.classList.add('active');
+    const bnav = document.getElementById('bnav-' + n);
+    if (bnav) bnav.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   function toggleChallenge(n) {
     challenges[n] = !challenges[n];
@@ -671,6 +916,7 @@ body {
 
       await window.saveActivity({
         name,
+        team: document.getElementById('log-team')?.value.trim() || '',
         activity: act,
         amount: amt,
         steps,
@@ -721,19 +967,248 @@ body {
     setTimeout(() => wrap.innerHTML = '', 5500);
   }
   document.getElementById('log-date').value = new Date().toISOString().split('T')[0];
+
+  // ── Photo gallery: pulled from the Google Form's linked Sheet ─────────
+  // SETUP REQUIRED (one-time, organizer only):
+  //   1. Open the Google Form's responses Sheet.
+  //   2. File → Share → Publish to web → select the response sheet/tab → CSV → Publish.
+  //   3. Copy the published CSV URL and paste it below as GALLERY_CSV_URL.
+  // Until this is set, the gallery will show a setup message instead of erroring.
+  const GALLERY_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRxcrZ-ir_vVfPd1bhMBaSofLtqMkfZV8WYWv_q0pjOZl-y4eMsX7DQ7Pc6-jMG_qY10A88WiqLIbAk/pub?output=csv'; // <-- paste published Google Sheet CSV link here
+
+  async function loadGallery() {
+    const grid = document.getElementById('gallery-grid');
+    if (!grid) return;
+
+    if (!GALLERY_CSV_URL) {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1; text-align:center; padding:1.5rem; color:#72243E; font-size:13px; line-height:1.7;">
+          📋 Gallery setup needed.<br>
+          Ask your site admin to publish the photo submission Sheet to the web<br>
+          and add the CSV link in the code (see comments near GALLERY_CSV_URL).
+        </div>`;
+      return;
+    }
+
+    try {
+      const res = await fetch(GALLERY_CSV_URL);
+      const text = await res.text();
+
+      // Basic CSV row parser that respects quoted fields containing commas
+      function parseCSVLine(line) {
+        const cells = [];
+        let cur = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+          const c = line[i];
+          if (c === '"') {
+            inQuotes = !inQuotes;
+          } else if (c === ',' && !inQuotes) {
+            cells.push(cur);
+            cur = '';
+          } else {
+            cur += c;
+          }
+        }
+        cells.push(cur);
+        return cells;
+      }
+
+      const lines = text.split('\n').filter(l => l.trim().length > 0);
+      const rows = lines.map(parseCSVLine);
+
+      // Helper: convert a Google Drive sharing link into a directly
+      // viewable image URL. Forms file-upload answers typically look like
+      // https://drive.google.com/open?id=FILE_ID
+      function toDirectImageUrl(raw) {
+        const clean = raw.trim().replace(/^"|"$/g, '');
+        const driveMatch = clean.match(/drive\.google\.com\/(?:open\?id=|file\/d\/)([a-zA-Z0-9_-]+)/);
+        if (driveMatch) {
+          return `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w500`;
+        }
+        if (/^https?:\/\/.*\.(jpg|jpeg|png|gif|webp)/i.test(clean)) {
+          return clean;
+        }
+        return null;
+      }
+
+      const urls = [];
+      rows.slice(1).forEach(row => {
+        row.forEach(cell => {
+          const direct = toDirectImageUrl(cell);
+          if (direct) urls.push(direct);
+        });
+      });
+
+      if (urls.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:1.5rem; color:#72243E; font-size:13px;">No photos submitted yet — be the first!</div>`;
+        return;
+      }
+
+      grid.innerHTML = urls.map(url => `
+        <a href="${url}" target="_blank" style="display:block; aspect-ratio:1; border-radius:12px; overflow:hidden; border:2px solid #ED93B1;">
+          <img src="${url}" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.parentElement.style.display='none'">
+        </a>
+      `).join('');
+    } catch (err) {
+      console.error(err);
+      grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:1.5rem; color:#72243E; font-size:13px;">Couldn't load photos right now. Try again later.</div>`;
+    }
+  }
+  // Load gallery once on page load (lightweight, just one fetch)
+  loadGallery();
+
+  // ── Name dropdown: populated live from registered participants ────────
+  function populateNameDropdown() {
+    const select = document.getElementById('log-name');
+    if (!select) return;
+    const participants = (window.getLatestParticipants && window.getLatestParticipants()) || [];
+    const currentValue = select.value;
+
+    // Sort alphabetically for easy scanning
+    const sorted = [...participants].sort((a, b) =>
+      (a.name || '').localeCompare(b.name || '')
+    );
+
+    select.innerHTML = '<option value="">— Select your name —</option>' +
+      sorted.map(p => `<option value="${(p.name||'').replace(/"/g,'&quot;')}" data-team="${(p.team||'').replace(/"/g,'&quot;')}">${p.name || '(no name)'}</option>`).join('');
+
+    // Restore previous selection if it still exists
+    if (currentValue && sorted.some(p => p.name === currentValue)) {
+      select.value = currentValue;
+    }
+  }
+  window.populateNameDropdown = populateNameDropdown;
+
+  // When a name is selected, auto-fill their team from registration
+  document.addEventListener('DOMContentLoaded', () => {
+    const logNameSelect = document.getElementById('log-name');
+    if (logNameSelect) {
+      logNameSelect.addEventListener('change', () => {
+        const selectedOption = logNameSelect.options[logNameSelect.selectedIndex];
+        const team = selectedOption ? selectedOption.getAttribute('data-team') : '';
+        const teamField = document.getElementById('log-team');
+        if (teamField) teamField.value = team || '';
+      });
+    }
+  });
+  // Also attach immediately in case DOMContentLoaded already fired
+  (function attachNameChangeListener() {
+    const logNameSelect = document.getElementById('log-name');
+    if (logNameSelect && !logNameSelect.dataset.listenerAttached) {
+      logNameSelect.dataset.listenerAttached = 'true';
+      logNameSelect.addEventListener('change', () => {
+        const selectedOption = logNameSelect.options[logNameSelect.selectedIndex];
+        const team = selectedOption ? selectedOption.getAttribute('data-team') : '';
+        const teamField = document.getElementById('log-team');
+        if (teamField) teamField.value = team || '';
+      });
+    }
+  })();
+
+  // ── Admin panel ──────────────────────────────────────────────────────
+  // NOTE: this is a basic deterrent, not real security — anyone who views
+  // the page source can read the password. Don't store sensitive data here.
+  const ADMIN_PASSWORD = 'summer2026admin';
+  let adminUnlocked = false;
+
+  function checkAdminPassword() {
+    const entered = document.getElementById('admin-password').value;
+    if (entered === ADMIN_PASSWORD) {
+      adminUnlocked = true;
+      document.getElementById('admin-panel-content').style.display = 'block';
+      document.getElementById('admin-pw-error').style.display = 'none';
+      renderAdminPanel();
+    } else {
+      document.getElementById('admin-pw-error').style.display = 'block';
+    }
+  }
+  window.checkAdminPassword = checkAdminPassword;
+
+  function renderAdminPanel() {
+    if (!adminUnlocked) return;
+    const activities = (window.getLatestActivities && window.getLatestActivities()) || [];
+    const participants = (window.getLatestParticipants && window.getLatestParticipants()) || [];
+
+    const actList = document.getElementById('admin-activities-list');
+    if (actList) {
+      const sorted = [...activities].sort((a, b) => (b.steps || 0) - (a.steps || 0));
+      if (sorted.length === 0) {
+        actList.innerHTML = '<p style="color:#72243E; font-size:13px;">No activity entries yet.</p>';
+      } else {
+        actList.innerHTML = sorted.map(d => `
+          <div style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #ED93B1;">
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:600; color:#4B1528;">${d.name || '(no name)'} ${d.team ? `· ${d.team}` : ''}</div>
+              <div style="font-size:11px; color:#72243E;">${d.date || '(no date)'} · ${d.activity || '?'} · ${(d.steps || 0).toLocaleString()} steps</div>
+            </div>
+            <button onclick="adminDeleteActivity('${d.id}', '${(d.name||'').replace(/'/g,"\\'")}', ${d.steps||0})"
+              style="background:#ED93B1; color:#4B1528; border:none; border-radius:8px; padding:6px 12px; font-size:12px; font-weight:600; cursor:pointer; flex-shrink:0;">
+              🗑️ Delete
+            </button>
+          </div>
+        `).join('');
+      }
+    }
+
+    const partList = document.getElementById('admin-participants-list');
+    if (partList) {
+      if (participants.length === 0) {
+        partList.innerHTML = '<p style="color:#0C447C; font-size:13px;">No registrations yet.</p>';
+      } else {
+        partList.innerHTML = participants.map(p => `
+          <div style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #85B7EB;">
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:600; color:#042C53;">${p.name || '(no name)'} ${p.team ? `· ${p.team}` : '· Solo'}</div>
+              <div style="font-size:11px; color:#0C447C;">${p.email || 'no email'} · ${(p.challenges||[]).join(', ') || 'no challenges'}</div>
+            </div>
+            <button onclick="adminDeleteParticipant('${p.id}', '${(p.name||'').replace(/'/g,"\\'")}')"
+              style="background:#85B7EB; color:#042C53; border:none; border-radius:8px; padding:6px 12px; font-size:12px; font-weight:600; cursor:pointer; flex-shrink:0;">
+              🗑️ Delete
+            </button>
+          </div>
+        `).join('');
+      }
+    }
+  }
+  window.renderAdminPanel = renderAdminPanel;
+
+  async function adminDeleteActivity(id, name, steps) {
+    if (!confirm(`Delete this activity entry?\n\n${name} — ${steps.toLocaleString()} steps\n\nThis cannot be undone.`)) return;
+    try {
+      await window.deleteActivityDoc(id);
+    } catch (err) {
+      console.error(err);
+      alert('Error deleting entry: ' + err.message);
+    }
+  }
+  window.adminDeleteActivity = adminDeleteActivity;
+
+  async function adminDeleteParticipant(id, name) {
+    if (!confirm(`Delete ${name}'s registration?\n\nThis only removes their registration record, not their logged steps.\n\nThis cannot be undone.`)) return;
+    try {
+      await window.deleteParticipantDoc(id);
+    } catch (err) {
+      console.error(err);
+      alert('Error deleting registration: ' + err.message);
+    }
+  }
+  window.adminDeleteParticipant = adminDeleteParticipant;
+
 </script>
 
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
 import {
   getFirestore,
   collection,
   addDoc,
   onSnapshot,
   query,
-  orderBy
+  orderBy,
+  deleteDoc,
+  doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -748,102 +1223,285 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
 window.db = db;
-
-window.firebaseFns = {
-  collection,
-  addDoc,
-  onSnapshot,
-  query,
-  orderBy
-};
+window.firebaseFns = { collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc };
 
 async function registerParticipant(data) {
   return await addDoc(collection(db, 'participants'), data);
 }
-
 async function saveActivity(data) {
   return await addDoc(collection(db, 'activities'), data);
 }
-
 window.registerParticipant = registerParticipant;
 window.saveActivity = saveActivity;
 
-const leaderboardQuery = query(
-  collection(db, 'activities'),
-  orderBy('createdAt', 'desc')
-);
+// ── Admin delete helpers ────────────────────────────────────────────────
+async function deleteActivityDoc(id) {
+  return await deleteDoc(doc(db, 'activities', id));
+}
+async function deleteParticipantDoc(id) {
+  return await deleteDoc(doc(db, 'participants', id));
+}
+window.deleteActivityDoc = deleteActivityDoc;
+window.deleteParticipantDoc = deleteParticipantDoc;
 
-onSnapshot(leaderboardQuery, (snapshot) => {
+// ── Days left ─────────────────────────────────────────────────────────────
+function updateDaysLeft() {
+  const end = new Date('2026-09-30T23:59:59');
+  const now = new Date();
+  const diff = Math.max(0, Math.ceil((end - now) / (1000 * 60 * 60 * 24)));
+  const el = document.getElementById('stat-days');
+  if (el) el.textContent = diff;
+}
+updateDaysLeft();
 
-  const totals = {};
+// ── Styling helpers ───────────────────────────────────────────────────────
+const avClasses = ['av-pink','av-mint','av-sky','av-lav','av-lime'];
+const pbClasses = ['pb-pink','pb-mint','pb-sky','pb-lav','pb-lime'];
+const medals    = ['🥇','🥈','🥉','✨','🌟','💫','🎉','🌈','☀️','🦄'];
+const teamEmojis = ['🔥','☀️','⛰️','🌊','🌿','🦋','🎯','🌈','🏄','💪'];
 
-  snapshot.forEach((doc) => {
-    const data = doc.data();
+// ── Shared state: latest snapshots from both collections ──────────────────
+// We keep both in memory and re-render whenever either changes.
+let latestParticipants = []; // [{ name, team, email, challenges }]
+let latestActivities   = []; // [{ name, team, steps, date, ... }]
 
-    if (!totals[data.name]) {
-      totals[data.name] = 0;
-    }
-
-    totals[data.name] += data.steps || 0;
+function rebuildAll() {
+  // Build a name → team map from registrations (source of truth for teams)
+  const nameToTeam = {};
+  latestParticipants.forEach(p => {
+    if (p.name && p.team) nameToTeam[p.name.trim()] = p.team.trim();
   });
 
-  const sorted = Object.entries(totals)
-    .sort((a,b) => b[1] - a[1])
-    .slice(0, 10);
-
-  const container = document.getElementById('lb-individual');
-
-  if (!container) return;
-
-  if (sorted.length === 0) {
-    container.innerHTML = `
-      <div style="text-align:center; padding:2rem;">
-        <div style="font-size:48px; margin-bottom:8px;">🐣</div>
-        <p style="font-size:14px; color:#633806;">
-          Be the first to log some summer steps!
-        </p>
-      </div>
-    `;
-    return;
+  // ── Total steps stat ────────────────────────────────────────────────────
+  const totalSteps = latestActivities.reduce((s, d) => s + (d.steps || 0), 0);
+  const stepsEl = document.getElementById('stat-steps');
+  if (stepsEl) {
+    stepsEl.textContent = totalSteps >= 1_000_000
+      ? (totalSteps / 1_000_000).toFixed(1) + 'M'
+      : totalSteps >= 1_000
+        ? (totalSteps / 1_000).toFixed(1) + 'K'
+        : totalSteps.toLocaleString();
   }
 
-  const emojis = ['🥇','🥈','🥉','✨','🌟','💫','🎉','🌈','☀️','🦄'];
-
-  container.innerHTML = '';
-
-  sorted.forEach((item, index) => {
-
-    const medal = emojis[index] || '✨';
-
-    container.innerHTML += `
-      <div class="lb-item">
-        <div class="rank">${medal}</div>
-
-        <div class="avatar av-pink">
-          ${item[0].charAt(0).toUpperCase()}
-        </div>
-
-        <div class="lb-info">
-          <div class="lb-name">${item[0]}</div>
-          <div class="lb-sub">Live participant</div>
-          <div class="pb-wrap">
-            <div class="pb-fill pb-pink"
-              style="width:${Math.min(100, 30 + index * 8)}%">
-            </div>
-          </div>
-        </div>
-
-        <div class="lb-right">
-          <div class="lb-steps">
-            ${item[1].toLocaleString()}
-          </div>
-          <div class="lb-pct">steps</div>
-        </div>
-      </div>
-    `;
+  // ── Individual leaderboard ──────────────────────────────────────────────
+  const indivTotals = {};
+  latestActivities.forEach(d => {
+    if (!d.name) return;
+    indivTotals[d.name] = (indivTotals[d.name] || 0) + (d.steps || 0);
   });
+  const indivSorted = Object.entries(indivTotals)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10);
+  const maxSteps = indivSorted[0]?.[1] || 1;
+
+  const lbIndiv = document.getElementById('lb-individual');
+  if (lbIndiv) {
+    if (indivSorted.length === 0) {
+      lbIndiv.innerHTML = `<div style="text-align:center;padding:2rem;"><div style="font-size:48px;margin-bottom:8px;">🐣</div><p style="font-size:14px;color:#633806;">Be the first to log some summer steps!</p></div>`;
+    } else {
+      lbIndiv.innerHTML = indivSorted.map(([name, steps], i) => {
+        const av   = avClasses[i % avClasses.length];
+        const pb   = pbClasses[i % pbClasses.length];
+        const pct  = Math.round((steps / maxSteps) * 100);
+        const badge = i === 0 ? `<span class="badge bdg-sun">Leading!</span>` : '';
+        const team = nameToTeam[name.trim()];
+        const sub  = team ? `Team: ${team}` : 'Solo participant';
+        return `
+          <div class="lb-item">
+            <div class="rank">${medals[i] || (i+1)}</div>
+            <div class="avatar ${av}">${name.charAt(0).toUpperCase()}</div>
+            <div class="lb-info">
+              <div class="lb-name">${name}${badge}</div>
+              <div class="lb-sub">${sub}</div>
+              <div class="pb-wrap"><div class="pb-fill ${pb}" style="width:${pct}%"></div></div>
+            </div>
+            <div class="lb-right">
+              <div class="lb-steps">${steps.toLocaleString()}</div>
+              <div class="lb-pct">steps</div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+  }
+
+  // ── Team leaderboard ────────────────────────────────────────────────────
+  // Seed teams from registrations first — every registered team member
+  // appears regardless of whether they've logged steps yet.
+  const teamTotals = {}; // teamName → { steps, members: Map<name, steps> }
+
+  // Step 1: register all team members from participants collection
+  latestParticipants.forEach(p => {
+    const name = p.name && p.name.trim();
+    const team = p.team && p.team.trim();
+    if (!name || !team) return;
+    if (!teamTotals[team]) teamTotals[team] = { steps: 0, members: new Map() };
+    if (!teamTotals[team].members.has(name)) {
+      teamTotals[team].members.set(name, 0); // start at 0 until activities come in
+    }
+  });
+
+  // Step 2: add activity steps — resolve team from activity field OR registration lookup
+  latestActivities.forEach(d => {
+    const name = d.name && d.name.trim();
+    if (!name) return;
+    const resolvedTeam = (d.team && d.team.trim()) || nameToTeam[name] || null;
+    if (!resolvedTeam) return;
+    if (!teamTotals[resolvedTeam]) teamTotals[resolvedTeam] = { steps: 0, members: new Map() };
+    teamTotals[resolvedTeam].steps += (d.steps || 0);
+    // Update this member's personal step count within the team
+    const prev = teamTotals[resolvedTeam].members.get(name) || 0;
+    teamTotals[resolvedTeam].members.set(name, prev + (d.steps || 0));
+  });
+
+  const teamSorted = Object.entries(teamTotals)
+    .sort((a, b) => b[1].steps - a[1].steps)
+    .slice(0, 10);
+  const maxTeam = teamSorted[0]?.[1].steps || 1;
+
+  const lbTeam = document.getElementById('lb-team');
+  if (lbTeam) {
+    if (teamSorted.length === 0) {
+      lbTeam.innerHTML = `<div style="text-align:center;padding:2rem;"><div style="font-size:48px;margin-bottom:8px;">👥</div><p style="font-size:14px;color:#633806;">No teams yet — register with a team name to get started!</p></div>`;
+    } else {
+      lbTeam.innerHTML = teamSorted.map(([teamName, info], i) => {
+        const av  = avClasses[i % avClasses.length];
+        const pb  = pbClasses[i % pbClasses.length];
+        const pct = Math.round((info.steps / maxTeam) * 100);
+        const badge = i === 0 ? `<span class="badge bdg-sun">1st!</span>` : '';
+        const memberCount = info.members.size;
+        const steps = info.steps;
+        const display = steps >= 1_000_000
+          ? (steps / 1_000_000).toFixed(1) + 'M'
+          : steps >= 1_000 ? (steps / 1_000).toFixed(1) + 'K'
+          : steps.toLocaleString();
+        const memberList = [...info.members.entries()].map(([n, s]) =>
+          s > 0 ? `${n} (${s.toLocaleString()})` : `${n} <span style="opacity:0.55;font-size:10px;">no steps yet</span>`
+        ).join(' · ');
+        return `
+          <div class="lb-item">
+            <div class="rank">${medals[i] || (i+1)}</div>
+            <div class="avatar ${av}" style="border-radius:10px;">${teamEmojis[i]}</div>
+            <div class="lb-info">
+              <div class="lb-name">${teamName}${badge}</div>
+              <div class="lb-sub" title="${memberList}">${memberCount} member${memberCount !== 1 ? 's' : ''}: ${memberList}</div>
+              <div class="pb-wrap"><div class="pb-fill ${pb}" style="width:${pct}%"></div></div>
+            </div>
+            <div class="lb-right">
+              <div class="lb-steps">${display}</div>
+              <div class="lb-pct">steps</div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+  }
+
+  // ── Streak leaderboard ──────────────────────────────────────────────────
+  // Shows the CURRENT ACTIVE streak running up to today.
+  // A streak is alive if the person logged ≥10,000 steps yesterday OR today.
+  // If neither yesterday nor today has a qualifying entry, their active streak is 0.
+  const byPersonDate = {};
+  latestActivities.forEach(d => {
+    if (!d.name || !d.date) return;
+    if (!byPersonDate[d.name]) byPersonDate[d.name] = {};
+    byPersonDate[d.name][d.date] = (byPersonDate[d.name][d.date] || 0) + (d.steps || 0);
+  });
+
+  function toYMD(date) {
+    // Returns YYYY-MM-DD for a Date object in local time
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+
+  function activeStreak(dateStepMap) {
+    // Only days with ≥10,000 steps count
+    const qualifyingDays = new Set(
+      Object.entries(dateStepMap)
+        .filter(([, s]) => s >= 10000)
+        .map(([d]) => d)
+    );
+    if (qualifyingDays.size === 0) return 0;
+
+    const today = toYMD(new Date());
+    const yesterday = toYMD(new Date(Date.now() - 86400000));
+
+    // Streak must be alive as of today or yesterday
+    if (!qualifyingDays.has(today) && !qualifyingDays.has(yesterday)) return 0;
+
+    // Walk backwards from today counting consecutive qualifying days
+    let count = 0;
+    const cursor = new Date();
+    // Start from today; if today isn't logged yet, start from yesterday
+    if (!qualifyingDays.has(today)) {
+      cursor.setDate(cursor.getDate() - 1);
+    }
+    while (qualifyingDays.has(toYMD(cursor))) {
+      count++;
+      cursor.setDate(cursor.getDate() - 1);
+    }
+    return count;
+  }
+
+  const streaks = Object.entries(byPersonDate)
+    .map(([name, map]) => ({ name, streak: activeStreak(map) }))
+    .filter(x => x.streak > 0)
+    .sort((a, b) => b.streak - a.streak)
+    .slice(0, 5);
+
+  const lbStreak = document.getElementById('lb-streak');
+  if (lbStreak) {
+    const intro = `<p style="font-size:12px;color:#633806;margin-bottom:12px;">Current active streak of 10,000+ steps per day. Streak resets if you miss a day — must have logged today or yesterday to appear here.</p>`;
+    if (streaks.length === 0) {
+      lbStreak.innerHTML = intro + `<div style="text-align:center;padding:1.5rem;"><div style="font-size:48px;margin-bottom:8px;">🔥</div><p style="font-size:14px;color:#633806;">No active streaks yet — log 10K steps today to get started!</p></div>`;
+    } else {
+      lbStreak.innerHTML = intro + streaks.map(({ name, streak }, i) => {
+        const av = avClasses[i % avClasses.length];
+        const badge = i === 0 ? `<span class="badge bdg-sun">Leading!</span>` : '';
+        return `
+          <div class="lb-item">
+            <div class="rank">${i === 0 ? '🥇' : i+1}</div>
+            <div class="avatar ${av}">${name.charAt(0).toUpperCase()}</div>
+            <div class="lb-info">
+              <div class="lb-name">${name}${badge}</div>
+              <div class="lb-sub">Days with 10,000+ steps</div>
+            </div>
+            <div class="lb-right">
+              <div class="lb-steps">${streak} day${streak !== 1 ? 's' : ''}</div>
+              <div class="lb-pct">streak</div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+  }
+
+} // end rebuildAll
+
+// ── Participants listener ─────────────────────────────────────────────────
+onSnapshot(collection(db, 'participants'), (snap) => {
+  latestParticipants = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  const el = document.getElementById('stat-participants');
+  if (el) el.textContent = snap.size;
+  rebuildAll(); // re-render with updated team map
+  if (window.renderAdminPanel) window.renderAdminPanel();
+  if (window.populateNameDropdown) window.populateNameDropdown();
 });
+
+// ── Activities listener ───────────────────────────────────────────────────
+onSnapshot(
+  query(collection(db, 'activities'), orderBy('createdAt', 'asc')),
+  (snap) => {
+    latestActivities = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    rebuildAll(); // re-render with updated activity data
+    if (window.renderAdminPanel) window.renderAdminPanel();
+  }
+);
+
+// Expose for the admin panel script
+window.getLatestActivities = () => latestActivities;
+window.getLatestParticipants = () => latestParticipants;
 </script>
 
+</body>
+</html>
